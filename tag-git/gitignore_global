@@ -103,5 +103,6 @@ tags
 .env
 #  vim   #
 ##########
+/bundle
 *.swp
 *.swo
