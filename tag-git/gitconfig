@@ -1,0 +1,38 @@
+[user]
+	name = William Newell
+	github = newellwm
+	email = newellwm@gmail.com
+[color]
+	ui = always
+[color "branch"]
+	current = green reverse
+	local = green
+	remote = yellow
+[color "status"]
+	added = green
+	changed = yellow
+	untracked = red
+[core]
+	editor = vim
+	excludesfile = /Users/nyxnaut/.gitignore_global
+[push]
+	default = current
+[rerere]
+	enabled = false
+[pull]
+	rebase = false
+[commit]
+	template = /Users/nyxnaut/.gitmessage.txt
+[alias]
+	s = status
+	sha = rev-parse HEAD
+	last = log -1 HEAD --oneline --decorate
+	ll = log --oneline --decorate
+	set-master = branch --set-upstream-to=origin/master master
+	back = reset --soft HEAD~1
+	again = commit -c ORIG_HEAD
+	set-deploy = =
+	co = checkout
+	bs = branch -v
+	rs = remote -v
+	ci = commit
