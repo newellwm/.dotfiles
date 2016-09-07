@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/NyxNaut/code/nyum/app/views'
+let g:netrw_dirhist_2='/Users/NyxNaut/code/nyum/app/views/devise'
+let g:netrw_dirhist_3='/Users/NyxNaut/code/nyum/app/views/devise/sessions'
+let g:netrw_dirhist_4='/Users/NyxNaut/code/nyum/app/views/devise'
+let g:netrw_dirhist_5='/Users/NyxNaut/code/nyum/app/views/devise/registrations'
+let g:netrw_dirhist_6='/Users/NyxNaut/code/nyum/app/views/devise'
+let g:netrw_dirhist_7='/Users/NyxNaut/code/nyum/app/views'
+let g:netrw_dirhist_8='/Users/NyxNaut/code/nyum/app'
