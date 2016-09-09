@@ -1,48 +1,63 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+" call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-" My Bundles here:
+" Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+" Pulgin 'ctrlpvim/ctrlp.vim'
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'Smart-Tabs'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 "
-" original repos on github
-Bundle 'majutsushi/tagbar'
-Bundle 'altercation/vim-colors-solarized'
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just
+" :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!`
+"                   - to auto-approve removal      
+"
+" see :h vundle for more details or wiki for FAQ
 
-" Github repos of the user 'vim-scripts'
-" => can omit the username part
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-
-" non github repos
-Bundle 'git://git.wincent.com/command-t.git'
-" ...
-filetype plugin indent on     " required!
-
+"always show status bar
+set laststatus=2
 "show relative line numbers
+set ruler
 set number
 set relativenumber
 set numberwidth=5
 set smarttab "tabs at start, spaces else
 set shiftround "indents to nearest tabstop
-
+set autoindent
 "spaces...
 set ts=2 sts=2 sw=2 expandtab
 "but tabs are better =)
 "set ts=2 sts=2 sw=2 noexpandtab
 
-"yup
-set smartindent
+"tpope
+set backspace=indent,eol,start
+set complete-=i
 
+" color schemes can do bright w/o bold
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
+		set t_Co=16
+	endif
 "show whitespace chars and set syntax
-set list listchars=tab:»›,trail:·
-colo nofrils-dark
 set t_Co=256
+set list listchars=tab:»›,trail:·,nbsp:·
+colo nofrils-dark
 if !exists("g:syntax_on")
 	syntax enable
 endif
@@ -53,7 +68,18 @@ set hidden
 set splitbelow
 set splitright
 
-"test autocomplete
-"map <Tab> <C-P>
+"improve completion in command mode
+set wildmode=list:longest,list:full
+" set case insensitive search
 
+"improved % matching
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+	runtime! macros/matchit.vim
+endif
+
+"stop at 80 char
+set textwidth=80
+set colorcolumn=+1
 source ~/.vim/startup/mappings.vim
+source ~/.vim/startup/vim_to_tmux.vim
+
