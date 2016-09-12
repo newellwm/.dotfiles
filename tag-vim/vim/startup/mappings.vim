@@ -19,3 +19,8 @@ nnoremap <C-H> <C-W><C-H>
 
 "fixes ctrl u undo in insert mode
 inoremap <c-u> <c-g>u<c-u>
+
+"Enable screen scrolling with 'showmatch'
+inoremap } }<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+inoremap ] ]<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+inoremap ) )<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
