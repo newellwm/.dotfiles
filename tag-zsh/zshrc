@@ -1,0 +1,106 @@
+# prompt and async
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+
+# A list of all directories in which to look for commands,
+# scripts and programs
+PATH="$HOME/.rbenv/bin:$PATH"                              # RBENV
+PATH="/usr/local/share/npm/bin:$PATH"                      # NPM
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"                # Homebrew
+PATH="/Users/nyxnaut/.rbenv/versions/2.2.3/bin:$PATH"
+# =================
+# nvm (load io.js as node)
+# =================
+
+export NVM_DIR=~/.nvm
+source ~/.nvm/nvm.sh
+
+#######################################
+# List any open internet sockets on
+# several popular ports. Useful if a
+# rogue server is running.
+# - http://www.akadia.com/services/lsof_intro.html
+# - http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
+#
+# No Arguments.
+#######################################
+
+rogue() {
+  # add or remove ports to check here!
+  local PORTS="3000 4567 6379 8000 8888 27017"
+  local MESSAGE="> Checking for processes on ports"
+  local COMMAND="lsof"
+
+  for PORT in $PORTS; do
+    MESSAGE="${MESSAGE} ${PORT},"
+    COMMAND="${COMMAND} -i TCP:${PORT}"
+  done
+
+  echo "${MESSAGE%?}..."
+  local OUTPUT="$(${COMMAND})"
+
+  if [ -z "$OUTPUT" ]; then
+    echo "> Nothing running!"
+  else
+    echo "> Processes found:"
+    printf "\n$OUTPUT\n\n"
+    echo "> Use the 'kill' command with the 'PID' of any process you want to quit."
+    echo
+  fi
+}
+
+alias ..="cd .."
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias ';q'="exit"
+
+if ! zplug check; then
+  zplug install
+fi
+
+# Initialization for FDK command line tools.Mon Sep 12 03:06:33 2016
+FDK_EXE="/Users/nyxnaut/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/nyxnaut/bin/FDK/Tools/osx"
+export PATH
+export FDK_EXE
+
+# Pure prompt and necessary code
+zplug "mafredri/zsh-async"
+zplug "sindresorhus/pure"
+autoload -U promptinit; promptinit
+prompt pure
+
+# Core
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-history-substring-search"
+
+# omz tools
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/bower",   from:oh-my-zsh
+zplug "plugins/brew",   from:oh-my-zsh
+zplug "plugins/bundler",   from:oh-my-zsh
+zplug "plugins/gem",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+zplug "plugins/gitfast",   from:oh-my-zsh
+zplug "plugins/rails",   from:oh-my-zsh
+zplug "plugins/tmux",   from:oh-my-zsh
+zplug "plugins/vi-mode",   from:oh-my-zsh
+
+# Plugin tells you when you forgot an alias
+zplug "djui/alias-tips"
+
+# Fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Load syntax highlighting, keep at bottom of .zshrc
+zplug "zsh-users/zsh-syntax-highlighting", nice:10
+
+# Check for and install missing plugs
+if ! zplug check; then
+  printf "Install [y/n]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load --verbose
