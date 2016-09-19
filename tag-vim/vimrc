@@ -1,5 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
 "set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -40,8 +38,10 @@ set laststatus=2
 set incsearch "highlight search results
 set showmatch "shows matching brace on completion
 set matchtime=3 "speeds up showing matching brace
+set showcmd "show incomplete commands
+set scrolloff=5 "keep 5 lines between edge of editor and cursor
 
-set cul "highlight current line
+"set cul "highlight current line
 set ruler "show cursor coords in status bar
 "show relative line numbers and set number column width
 set number
@@ -51,11 +51,12 @@ set numberwidth=5
 set smarttab "tabs at start, spaces else
 set shiftround "indents to nearest tabstop
 set autoindent
+set list listchars=tab:\|\ ,trail:·,nbsp:·
 
 "spaces...
-set ts=2 sts=2 sw=2 expandtab
+"set ts=2 sts=2 sw=2 expandtab
 "but tabs are better =)
-"set ts=2 sts=2 sw=2 noexpandtab
+set ts=2 sts=2 sw=2 noexpandtab
 
 "tpope
 set backspace=indent,eol,start
@@ -67,7 +68,6 @@ if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
 	endif
 "show whitespace chars and set syntax
 set t_Co=256
-set list listchars=tab:»›,trail:·,nbsp:·
 colo nofrils-dark
 if !exists("g:syntax_on")
 	syntax enable
@@ -92,5 +92,7 @@ endif
 set nowrap
 set textwidth=80
 set colorcolumn=+1
+
+
 source ~/.vim/startup/mappings.vim
 source ~/.vim/startup/vim_to_tmux.vim

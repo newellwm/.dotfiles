@@ -24,6 +24,8 @@ source ~/.nvm/nvm.sh
 #
 # No Arguments.
 #######################################
+alias chrome='open -a "Google Chrome"'
+alias canary='open -a "Google Chrome Canary"'
 
 rogue() {
   # add or remove ports to check here!
