@@ -8,53 +8,36 @@ PATH="$HOME/.rbenv/bin:$PATH"                              # RBENV
 PATH="/usr/local/share/npm/bin:$PATH"                      # NPM
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"                # Homebrew
 PATH="/Users/nyxnaut/.rbenv/versions/2.2.3/bin:$PATH"
-# =================
-# nvm (load io.js as node)
-# =================
 
-export NVM_DIR=~/.nvm
-source ~/.nvm/nvm.sh
+export XDG_CONFIG_HOME=$HOME/.dotfiles/tag-config/
 
-#######################################
-# List any open internet sockets on
-# several popular ports. Useful if a
-# rogue server is running.
-# - http://www.akadia.com/services/lsof_intro.html
-# - http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers
-#
-# No Arguments.
-#######################################
+export EDITOR=vim
 alias chrome='open -a "Google Chrome"'
 alias canary='open -a "Google Chrome Canary"'
-
-rogue() {
-  # add or remove ports to check here!
-  local PORTS="3000 4567 6379 8000 8888 27017"
-  local MESSAGE="> Checking for processes on ports"
-  local COMMAND="lsof"
-
-  for PORT in $PORTS; do
-    MESSAGE="${MESSAGE} ${PORT},"
-    COMMAND="${COMMAND} -i TCP:${PORT}"
-  done
-
-  echo "${MESSAGE%?}..."
-  local OUTPUT="$(${COMMAND})"
-
-  if [ -z "$OUTPUT" ]; then
-    echo "> Nothing running!"
-  else
-    echo "> Processes found:"
-    printf "\n$OUTPUT\n\n"
-    echo "> Use the 'kill' command with the 'PID' of any process you want to quit."
-    echo
-  fi
-}
-
+alias -- -="cd -"
 alias ..="cd .."
 alias ...="cd ../../"
 alias ....="cd ../../../"
+alias .....="cd ../../../../"
+alias ......="cd ../../../../"
 alias ';q'="exit"
+alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
+alias vimrc='$EDITOR ~/.vimrc'
+alias l="ls -la"
+alias l="ls -la"
+alias ld="ls -ld */"
+alias v="nvim"
+alias tree="tree -A"
+alias treed="tree -d"
+alias tree1="tree -d -L 1"
+alias tree2="tree -d -L 2"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and
+# their installed packages
+
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
 if ! zplug check; then
   zplug install
@@ -93,6 +76,17 @@ zplug "djui/alias-tips"
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function src()
+{
+	autoload -U zrecompile
+		[ -f ~/.zshrc ] && zrecompile -p ~/.zshrc
+		[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+		[ -f ~/.zcompdump ] && zrecompile -p ~/.zcompdump
+		[ -f ~/.zshrc.zwc.old ] && rm -f ~/.zshrc.zwc.old
+		[ -f ~/.zcompdump.zwc.old ] && rm -f ~/.zcompdump.zwc.old
+		source ~/.zshrc
+}
 
 # Load syntax highlighting, keep at bottom of .zshrc
 zplug "zsh-users/zsh-syntax-highlighting", nice:10

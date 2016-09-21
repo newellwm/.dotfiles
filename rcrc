@@ -1,3 +1,3 @@
-EXCLUDES="README.md"
+INCLUDES="README.md"
 HOSTNAME="Anastasia.local"
-COPY_ALWAYS="rcrc"
+TAGS="git hyperterm tmux vim zsh"
