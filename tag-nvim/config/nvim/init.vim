@@ -37,7 +37,7 @@ call dein#install()
 endif
 
 set showmatch "shows matching brace on completion
-set matchtime=3 "speeds up showing matching brace
+set matchtime=2 "speeds up showing matching brace
 set showcmd "show incomplete commands
 set scrolloff=5 "keep 5 lines between edge of editor and cursor
 
@@ -86,6 +86,10 @@ let g:neomake_open_list=2
 "run one make checker at a time
 "let g:neomake_serialize = 1
 let g:neomake_javascript_enabled_makers = ['xo']
+"https://github.com/neovim/neovim/issues/2048 for info on these
+"commands. Run in terminal if ctrl+h isn't working for mac term (& arch?)
+"infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
+"tic $TERM.ti
 source ~/.config/nvim/startup/mappings.vim
 source ~/.config/nvim/startup/vim_to_tmux.vim
 source ~/.config/nvim/startup/unite.vim
