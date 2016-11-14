@@ -1,3 +1,4 @@
+"pip2 install --user --upgrade neovim
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
 "(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
@@ -16,25 +17,19 @@ endif
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-"dein plugin manager config
-set runtimepath+=/Users/nyxnaut/.config/nvim/repos/github.com/Shougo/dein.vim
-call dein#begin('/Users/nyxnaut/.config/nvim/')
-call dein#add('Shougo/unite.vim')
-call dein#add('robertmeta/nofrils')
-call dein#add('vim-airline/vim-airline')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('joshdick/onedark.vim')
-call dein#add('neomake/neomake')
-"call dein#add('Valloric/YouCompleteMe')
-"cd ~/.vim/bundle/YouCompleteMe
-"./install.py --all
-call dein#end()
+call plug#begin('~/.config/nvim/bundle')
+Plug 'Shougo/unite.vim'
+Plug 'sheerun/vim-polyglot', { 'do': './build' }
+Plug 'robertmeta/nofrils'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Plug 'joshdick/onedark.vim', { 'dir': '~/.config/nvim/colors' }
+Plug 'neomake/neomake'
+Plug 'lambdatoast/elm.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+call plug#end()
 filetype plugin indent on
-
-"Install missing plugins on startup
-if dein#check_install()
-call dein#install()
-endif
 
 set showmatch "shows matching brace on completion
 set matchtime=2 "speeds up showing matching brace
@@ -69,6 +64,9 @@ set undofile
 set splitbelow
 set splitright
 
+"ignore case unless capitalized
+set ignorecase smartcase
+
 "stop at 80 char
 set nowrap
 set textwidth=80
@@ -86,6 +84,7 @@ let g:neomake_open_list=2
 "run one make checker at a time
 "let g:neomake_serialize = 1
 let g:neomake_javascript_enabled_makers = ['xo']
+let g:neomake_c_enabled_makers = ['gcc']
 "https://github.com/neovim/neovim/issues/2048 for info on these
 "commands. Run in terminal if ctrl+h isn't working for mac term (& arch?)
 "infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
@@ -93,3 +92,4 @@ let g:neomake_javascript_enabled_makers = ['xo']
 source ~/.config/nvim/startup/mappings.vim
 source ~/.config/nvim/startup/vim_to_tmux.vim
 source ~/.config/nvim/startup/unite.vim
+source ~/.config/nvim/startup/leader_mappings.vim

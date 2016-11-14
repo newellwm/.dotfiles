@@ -11,8 +11,11 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
+let mapleader = ","
+
 noremap : ;
 noremap ; :
+noremap q! Q
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>

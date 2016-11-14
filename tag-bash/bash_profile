@@ -354,3 +354,4 @@ FDK_EXE="/Users/nyxnaut/bin/FDK/Tools/osx"
 PATH=${PATH}:"/Users/nyxnaut/bin/FDK/Tools/osx"
 export PATH
 export FDK_EXE
+if [ -e /Users/nyxnaut/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/nyxnaut/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

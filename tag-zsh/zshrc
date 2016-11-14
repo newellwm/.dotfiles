@@ -1,3 +1,4 @@
+# If vim cannot file complete remove zcompdump from zplug directory
 # prompt and async
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
@@ -12,6 +13,7 @@ PATH="/Users/nyxnaut/.rbenv/versions/2.2.3/bin:$PATH"
 export EDITOR=nvim
 alias chrome='open -a "Google Chrome"'
 alias canary='open -a "Google Chrome Canary"'
+alias brews='brew list -1'
 
 alias -- -="cd -"
 alias ..="cd .."
@@ -65,7 +67,6 @@ zplug "zsh-users/zsh-history-substring-search"
 # omz tools
 zplug "plugins/git",   from:oh-my-zsh
 zplug "plugins/bower",   from:oh-my-zsh
-zplug "plugins/brew",   from:oh-my-zsh
 zplug "plugins/bundler",   from:oh-my-zsh
 zplug "plugins/gem",   from:oh-my-zsh
 zplug "plugins/git",   from:oh-my-zsh
