@@ -1,5 +1,3 @@
-let mapleader = "\<Space>" 
-
 no <left> <Nop>
 no <right> <Nop>
 ino <down> <Nop>
@@ -11,8 +9,7 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
-let mapleader = ","
-
+:imap jj <Esc>
 noremap : ;
 noremap ; :
 noremap q! Q

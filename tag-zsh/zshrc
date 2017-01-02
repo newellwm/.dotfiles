@@ -1,7 +1,9 @@
 # If vim cannot file complete remove zcompdump from zplug directory
 # prompt and async
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=~/.zplug
 source $ZPLUG_HOME/init.zsh
+# If installed, direnv allows .envrc (local env. variables)
+eval "$(direnv hook zsh)"
 
 # A list of all directories in which to look for commands,
 # scripts and programs
@@ -9,10 +11,14 @@ PATH="$HOME/.rbenv/bin:$PATH"                              # RBENV
 PATH="/usr/local/share/npm/bin:$PATH"                      # NPM
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"                # Homebrew
 PATH="/Users/nyxnaut/.rbenv/versions/2.2.3/bin:$PATH"
+PATH="$(yarn global bin):$PATH"
 
 export EDITOR=nvim
 alias chrome='open -a "Google Chrome"'
 alias canary='open -a "Google Chrome Canary"'
+alias devfox='open -a "FirefoxDeveloperEdition"'
+alias fox='open -a "Firefox"'
+alias night='open -a "FirefoxNightly"'
 alias brews='brew list -1'
 
 alias -- -="cd -"
@@ -31,7 +37,7 @@ alias tmuxrc='$EDITOR ~/.tmux.conf'
 alias l="ls -la"
 alias l="ls -la"
 alias ld="ls -ld */"
-alias v="nvim"
+alias v="$EDITOR"
 alias tree="tree -A"
 alias treed="tree -d"
 alias tree1="tree -d -L 1"
@@ -55,34 +61,36 @@ export PATH
 export FDK_EXE
 
 # Pure prompt and necessary code
-zplug "mafredri/zsh-async"
-zplug "sindresorhus/pure"
-autoload -U promptinit; promptinit
+# Ugh get the stupid prompt load error again, but still works for now so #lazy
+zplug "mafredri/zsh-async", defer:0
+zplug "sindresorhus/pure", use:pure.zsh
+autoload -U promptinit && promptinit
 prompt pure
 
 # Core
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
 
-# omz tools
-zplug "plugins/git",   from:oh-my-zsh
-zplug "plugins/bower",   from:oh-my-zsh
-zplug "plugins/bundler",   from:oh-my-zsh
-zplug "plugins/gem",   from:oh-my-zsh
-zplug "plugins/git",   from:oh-my-zsh
+#zplug "plugins/bundler",   from:oh-my-zsh
+#zplug "plugins/gem",   from:oh-my-zsh
 zplug "plugins/gitfast",   from:oh-my-zsh
 zplug "plugins/rails",   from:oh-my-zsh
-zplug "plugins/tmux",   from:oh-my-zsh
+#zplug "plugins/tmux",   from:oh-my-zsh
 zplug "plugins/vi-mode",   from:oh-my-zsh
 
 # Plugin tells you when you forgot an alias
 zplug "djui/alias-tips"
 
 # Fuzzy finder
+# export FZF_DEFAULT_COMMAND='ag -g""'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load syntax highlighting, keep at bottom of .zshrc
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Github page specifically asks for placement after zsh-syntax-highlighting
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+zplug "zsh-users/zsh-history-substring-search", defer:2
 
 # Check for and install missing plugs
 if ! zplug check; then
@@ -92,4 +100,4 @@ if ! zplug check; then
   fi
 fi
 
-zplug load --verbose
+zplug load

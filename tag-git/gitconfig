@@ -1,6 +1,6 @@
 [user]
 	name = William Newell
-	github = newellwm
+	github = nyxnaut
 	email = newellwm@gmail.com
 [color]
 	ui = always
@@ -14,13 +14,14 @@
 	untracked = red
 [core]
 	editor = vim
-	excludesfile = /Users/nyxnaut/.gitignore_global
+	excludesfile = /Users/nyxnaut/.global_ignore
+	ignorecase = false
 [push]
 	default = current
 [rerere]
-	enabled = false
+	enabled = true
 [pull]
-	rebase = false
+	rebase = true
 [commit]
 	template = /Users/nyxnaut/.gitmessage.txt
 [alias]
@@ -36,3 +37,5 @@
 	bs = branch -v
 	rs = remote -v
 	ci = commit
+[rebase]
+	autostash = true
