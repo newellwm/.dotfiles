@@ -74,8 +74,9 @@ set textwidth=80
 set colorcolumn=+1
 
 "colorscheme nofrils-dark
-colorscheme onedark
-let g:airline_theme='raven'
+colorscheme one
+set background=dark
+let g:airline_theme='one'
 
 let g:autotagTagsFile="./.git/tags"
 
@@ -113,9 +114,9 @@ let g:tern#filetypes=[
       \ 'javascript.jsx'
       \ ]
 
-source ~/.config/nvim/startup/project_locals.vim
-source ~/.config/nvim/startup/lint_setups.vim
+" source ~/.config/nvim/startup/project_locals.vim
+" source ~/.config/nvim/startup/lint_setups.vim
 source ~/.config/nvim/startup/mappings.vim
-source ~/.config/nvim/startup/vim_to_tmux.vim
-source ~/.config/nvim/startup/denite.vim
-source ~/.config/nvim/startup/leader_mappings.vim
+" source ~/.config/nvim/startup/vim_to_tmux.vim
+" source ~/.config/nvim/startup/denite.vim
+" source ~/.config/nvim/startup/leader_mappings.vim

@@ -2,70 +2,27 @@
 # prompt and async
 export ZPLUG_HOME=~/.zplug
 source $ZPLUG_HOME/init.zsh
-# If installed, direnv allows .envrc (local env. variables)
-eval "$(direnv hook zsh)"
-
-# A list of all directories in which to look for commands,
-# scripts and programs
-PATH="$HOME/.rbenv/bin:$PATH"                              # RBENV
-PATH="/usr/local/share/npm/bin:$PATH"                      # NPM
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"                # Homebrew
-PATH="/Users/nyxnaut/.rbenv/versions/2.2.3/bin:$PATH"
-PATH="$(yarn global bin):$PATH"
-
-export EDITOR=nvim
-alias chrome='open -a "Google Chrome"'
-alias canary='open -a "Google Chrome Canary"'
-alias devfox='open -a "FirefoxDeveloperEdition"'
-alias fox='open -a "Firefox"'
-alias night='open -a "FirefoxNightly"'
-alias brews='brew list -1'
-
-alias -- -="cd -"
-alias ..="cd .."
-alias ...="cd ../../"
-alias ....="cd ../../../"
-alias .....="cd ../../../../"
-alias ......="cd ../../../../"
-alias ';q'="exit"
-
-alias zshrc='$EDITOR ~/.zshrc && source ~/.zshrc'
-alias vimrc='$EDITOR ~/.vimrc'
-alias nvimrc='$EDITOR ~/.config/nvim/init.vim'
-alias tmuxrc='$EDITOR ~/.tmux.conf'
-
-alias l="ls -la"
-alias l="ls -la"
-alias ld="ls -ld */"
-alias v="$EDITOR"
-alias tree="tree -A"
-alias treed="tree -d"
-alias tree1="tree -d -L 1"
-alias tree2="tree -d -L 2"
-
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-# Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and
-# their installed packages
-
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade --all; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+source ~/.profile
 
 if ! zplug check; then
   zplug install
 fi
 
-# Initialization for FDK command line tools.Mon Sep 12 03:06:33 2016
-FDK_EXE="/Users/nyxnaut/bin/FDK/Tools/osx"
-PATH=${PATH}:"/Users/nyxnaut/bin/FDK/Tools/osx"
-export PATH
-export FDK_EXE
+# As part of a one-stop-shop update command please do the following:
+# apt-get, zplug, nvim plug => upg/upd
+# cd ~/.rbenv && git pull
+# cd ~/.rbenv/plugins/ruby-build/ && git pull
+# pip2 install --upgrade neovim
+# pip3 install --upgrade neovim
+
 
 # Pure prompt and necessary code
 # Ugh get the stupid prompt load error again, but still works for now so #lazy
 zplug "mafredri/zsh-async", defer:0
 zplug "sindresorhus/pure", use:pure.zsh
+
 autoload -U promptinit && promptinit
-prompt pure
+prompt pure &>/dev/null
 
 # Core
 zplug "zsh-users/zsh-completions"
@@ -82,7 +39,7 @@ zplug "djui/alias-tips"
 
 # Fuzzy finder
 # export FZF_DEFAULT_COMMAND='ag -g""'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Load syntax highlighting, keep at bottom of .zshrc
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
@@ -101,3 +58,4 @@ if ! zplug check; then
 fi
 
 zplug load
+# eval "$(rbenv init -)"

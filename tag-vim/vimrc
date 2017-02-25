@@ -95,4 +95,4 @@ set colorcolumn=+1
 
 
 source ~/.vim/startup/mappings.vim
-source ~/.vim/startup/vim_to_tmux.vim
+" source ~/.vim/startup/vim_to_tmux.vim
