@@ -1,3 +1,7 @@
+let mapleader = "\<Space>"
+
+nnoremap <Leader>w :w<CR>
+
 no <left> <Nop>
 no <right> <Nop>
 ino <down> <Nop>
@@ -9,7 +13,7 @@ vno <left> <Nop>
 vno <right> <Nop>
 vno <up> <Nop>
 
-:imap jj <Esc>
+imap jj <Esc>
 noremap : ;
 noremap ; :
 noremap q! Q
@@ -23,6 +27,7 @@ nnoremap <C-H> <C-W><C-H>
 inoremap <c-u> <c-g>u<c-u>
 
 "Enable screen scrolling with 'showmatch'
-inoremap } }<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
-inoremap ] ]<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
-inoremap ) )<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+"NOTE: Honestly don't remember what this does
+"inoremap } }<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+"inoremap ] ]<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a
+"inoremap ) )<Left><c-o>%<c-o>:sleep 500m<CR><c-o>%<c-o>a

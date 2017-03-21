@@ -11,14 +11,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 "Plug 'tpope/vim-fugitive'
 "vim.org Super Retab
 "Plug 'Shougo/neoinclude.vim' " Add with jsctags (ramitos/jsctags)
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"let g:airline_theme='one'
-" Requires tern, currently global added via yarn
-"if executable('tern')
-"  Plug 'carlitux/deoplete-ternjs'
-"endif
-"Plug 'junegunn/fzf.vim'
 call plug#begin('~/.config/nvim/bundle')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -29,97 +21,42 @@ Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/joshdick/onedark.vim.git', { 'dir': '~/.config/nvim/colors' }
 Plug 'neomake/neomake'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"requires tern, currently global added via yarn
+if executable('tern')
+  Plug 'carlitux/deoplete-ternjs'
+endif
 call plug#end()
 
 filetype plugin indent on
+set undodir=~/.config/nvim/undodir "set directory to save undos between sessions
 
-set showmatch "shows matching brace on completion
-set matchtime=2 "speeds up showing matching brace
-set showcmd "show incomplete commands
-set scrolloff=5 "keep 5 lines between edge of editor and cursor
+set undofile                 "enable persistent undos
+set ts=2 sts=2 sw=2          "set all tabbing to 2 spaces
+set expandtab                "tab with spaces, even though tabs are better
+set showmatch                "display matching brace on completion
+set matchtime=2              "speed up display of matching brace
+set showcmd                  "display incomplete commands
+set scrolloff=5              "keep 5 lines between edge of editor and cursor
+set sidescroll=7             "move 8 characters at screen edge
+set nowrap                   "prevent line wrapping
+"set cul                     "highlight current line
+set ruler                    "show cursor coords in status bar
+set number                   "show line numbers
+set relativenumber           "make line numbers relative to cursor
+set numberwidth=5            "width of line number column
+set shiftround               "indents to nearest tabstop
+set hidden                   "allow buffer swap without saving
+set splitbelow               "change direction of default split
+set splitright               "change direction of default vsplit
+set ignorecase smartcase     "ignore case unless capitalized
+set tw=80                    "stop at the 80th character
+set colorcolumn=+1           "put a colored column at 81
+set list listchars=precedes:<,extends:>,tab:\|\ ,trail:·,nbsp:· "whitespace
+if !isdirectory($HOME."/.config/nvim/undodir")
+  call mkdir($HOME."/.config/nvim/undodir", "", 0770)
+endif
 
-" set cul "highlight current line
-set ruler "show cursor coords in status bar
-
-" show relative line numbers and set number column width
-set number
-set relativenumber
-set numberwidth=5
-
-set shiftround "indents to nearest tabstop
-" spaces...
-set ts=2 sts=2 sw=2 expandtab
-" even though tabs are better =(
-"set ts=2 sts=2 sw=2 noexpandtab
-
-" display whitespace
-set list listchars=precedes:<,extends:>,tab:\|\ ,trail:·,nbsp:·
-
-" allow buffer switch w/o saving
-set hidden
-
-" keep them undos
-set undodir=~/.config/nvim/undodir
-set undofile
-
-" change default split direction
-set splitbelow
-set splitright
-
-" ignore case unless capitalized
-set ignorecase smartcase
-
-" Do not wrap long lines, move 7 characters on edge of screen
-set nowrap
-set sidescroll=7
-
-" stop at 80 char
-set textwidth=80
-set colorcolumn=+1
-
-"colorscheme nofrils-dark
-colorscheme onedark
-"set background=dark
-
-let g:autotagTagsFile="./.git/tags"
-let g:deoplete#enable_at_startup=1
-let g:deoplete#tag#cache_limit_size=50000000
-let g:deoplete#skip_chars = ['(', ')']
-
-" <TAB>: completion.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
-function! s:check_back_space() abort "{{{
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction"}}}
-
-" <S-TAB>: completion back.
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return deoplete#close_popup() . "\<CR>"
-endfunction
-
-let g:tern_request_timeout=1
-"let g:tern_show_signature_in_pum='0'
-let g:tern#filetypes=[
-      \ 'jsx',
-      \ 'javascript.jsx'
-      \ ]
-
-" source ~/.config/nvim/startup/project_locals.vim
-" source ~/.config/nvim/startup/lint_setups.vim
+"source ~/.config/nvim/startup/project-locals.vim
+"source ~/.config/nvim/startup/lint-setups.vim
 source ~/.config/nvim/startup/mappings.vim
-" source ~/.config/nvim/startup/vim_to_tmux.vim
-" source ~/.config/nvim/startup/denite.vim
-" source ~/.config/nvim/startup/leader_mappings.vim
+source ~/.config/nvim/startup/plugin-configs.vim

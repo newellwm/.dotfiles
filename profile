@@ -39,19 +39,19 @@ alias .....="cd ../../../../"
 alias v="$EDITOR"
 
 alias docker-machine="docker"
-alias bashrc="$EDITOR ~/.bashrc"
-alias zshrc="$EDITOR ~/.zshrc"
-alias vimrc="$EDITOR ~/.vimrc"
+alias brc="$EDITOR ~/.bashrc"
+alias zrc="$EDITOR ~/.zshrc"
+alias vrc="$EDITOR ~/.vimrc"
 alias nrc="$EDITOR ~/.config/nvim/init.vim"
 alias prc="$EDITOR ~/.profile"
 
 alias gw+="X86_64-W64-Mingw32-g++ -static"
 
-PATH="/usr/local/share/npm/bin:$PATH"
-PATH="$HOME/.rbenv/bin:$PATH"
-PATH="/home/nyxnaut/.gem/ruby/2.4.0/bin:$PATH"
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH=~/.npm-global/bin:$PATH
+PATH=~/.rbenv/bin:$PATH
 # PATH="$PATH: yarn global bin"
+#PATH="/home/nyxnaut/.gem/ruby/2.4.0/bin:$PATH"
+PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 export PATH
 # export DISPLAY=:0.0

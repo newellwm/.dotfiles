@@ -32,7 +32,7 @@ zplug "zsh-users/zsh-completions"
 zplug "plugins/gitfast",   from:oh-my-zsh
 zplug "plugins/rails",   from:oh-my-zsh
 #zplug "plugins/tmux",   from:oh-my-zsh
-zplug "plugins/vi-mode",   from:oh-my-zsh
+#zplug "plugins/vi-mode",   from:oh-my-zsh
 
 # Plugin tells you when you forgot an alias
 zplug "djui/alias-tips"
