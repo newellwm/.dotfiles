@@ -48,7 +48,7 @@ alias prc="$EDITOR ~/.profile"
 alias gw+="X86_64-W64-Mingw32-g++ -static"
 
 PATH=$HOME/.npm-global/bin:$PATH
-PATH=$HOME/.yarn-global/bin:$PATH
+# PATH=$HOME/.yarn-global/bin:$PATH
 PATH=$HOME/.rbenv/bin:$PATH
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
