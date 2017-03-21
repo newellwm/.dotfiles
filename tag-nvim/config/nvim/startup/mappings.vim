@@ -2,6 +2,8 @@ let mapleader = "\<Space>"
 
 nnoremap <Leader>w :w<CR>
 
+nnoremap <CR> :noh<CR>
+
 no <left> <Nop>
 no <right> <Nop>
 ino <down> <Nop>

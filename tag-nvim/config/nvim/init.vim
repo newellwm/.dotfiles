@@ -9,7 +9,6 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 "Next to add:
 "Plug 'craigemery/vim-autotag'
 "Plug 'tpope/vim-fugitive'
-"vim.org Super Retab
 "Plug 'Shougo/neoinclude.vim' " Add with jsctags (ramitos/jsctags)
 call plug#begin('~/.config/nvim/bundle')
 Plug 'tpope/vim-surround'
@@ -19,8 +18,9 @@ Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sheerun/vim-polyglot', { 'do': './build' }
 Plug 'itchyny/lightline.vim'
-Plug 'https://github.com/joshdick/onedark.vim.git', { 'dir': '~/.config/nvim/colors' }
 Plug 'neomake/neomake'
+Plug 'kovisoft/slimv'
+"Plug 'vim-scripts/Limp', { 'for': 'lisp' }
 "requires tern, currently global added via yarn
 if executable('tern')
   Plug 'carlitux/deoplete-ternjs'
@@ -56,7 +56,11 @@ if !isdirectory($HOME."/.config/nvim/undodir")
   call mkdir($HOME."/.config/nvim/undodir", "", 0770)
 endif
 
-"source ~/.config/nvim/startup/project-locals.vim
-"source ~/.config/nvim/startup/lint-setups.vim
+"create two commands to switch indentation from spaces to tabs
+:command! -range=% -nargs=0 T2S execute '<line1>,<line2>s#^\t\+#\=repeat(" ", len(submatch(0))*' . &ts . ')'
+:command! -range=% -nargs=0 S2T execute '<line1>,<line2>s#^\( \{'.&ts.'\}\)\+#\=repeat("\t", len(submatch(0))/' . &ts .')'
+
 source ~/.config/nvim/startup/mappings.vim
 source ~/.config/nvim/startup/plugin-configs.vim
+"source ~/.config/nvim/startup/project-locals.vim
+"source ~/.config/nvim/startup/lint-setups.vim

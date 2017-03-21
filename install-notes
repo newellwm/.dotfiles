@@ -1,8 +1,10 @@
 sudo Pacman -Syu
-sudo Pacman -S vim git clang llvm gcc zsh yaourt qemu npm nodejs
+sudo Pacman -S vim git clang llvm gcc zsh yaourt qemu npm nodejs sbcl
 adobe-source-code-pro-fonts open-ssh python2 python
 sudo Pacman -S neovim python2-neovim python-neovim
 curl -sL zplug.sh/installer | zsh
+curl -O https://beta.quicklisp.org/quicklisp.lisp
+sbcl --load quicklisp
 
 ### THOGHTBOT'S RCM ###
 curl -LO https://thoughtbot.github.io/rcm/dist/rcm-1.3.1.tar.gz && \

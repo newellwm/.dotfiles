@@ -1,3 +1,2 @@
 INCLUDES="README.md"
-HOSTNAME="Anastasia.local"
 TAGS="git hyperterm tmux vim zsh"

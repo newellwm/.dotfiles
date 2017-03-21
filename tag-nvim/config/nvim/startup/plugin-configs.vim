@@ -46,8 +46,10 @@ let g:lightline = {
 let g:tern_request_timeout=1
 "let g:tern_show_signature_in_pum='0'
 let g:tern#filetypes=[
-      \ 'jsx',
-      \ 'javascript.jsx'
-      \ ]
+  \ 'jsx',
+  \ 'javascript.jsx'
+  \ ]
 
+let g:slimv_swank_cmd =
+  \ '!sbcl --load ~/code/lsp/start-swank.lisp &'
 
