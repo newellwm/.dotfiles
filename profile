@@ -47,10 +47,9 @@ alias prc="$EDITOR ~/.profile"
 
 alias gw+="X86_64-W64-Mingw32-g++ -static"
 
-PATH=~/.npm-global/bin:$PATH
-PATH=~/.rbenv/bin:$PATH
-# PATH="$PATH: yarn global bin"
-#PATH="/home/nyxnaut/.gem/ruby/2.4.0/bin:$PATH"
+PATH=$HOME/.npm-global/bin:$PATH
+PATH=$HOME/.yarn-global/bin:$PATH
+PATH=$HOME/.rbenv/bin:$PATH
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 export PATH
