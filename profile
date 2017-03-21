@@ -24,9 +24,10 @@ export HISTCONTROL=ignoreboth
 
 # Make some commands not show up in history
 export HISTIGNORE="h"
-export EDITOR=emacsclient
-export ALTERNATE_EDITOR=vim
-alias ke='emacsclient -e "(kill-emacs)"'
+export EDITOR=nvim
+#export EDITOR=emacsclient
+#export ALTERNATE_EDITOR=vim
+#alias ke='emacsclient -e "(kill-emacs)"'
 
 alias sudo="sudo -E"
 
@@ -37,6 +38,7 @@ alias .....="cd ../../../../"
 
 alias v="$EDITOR"
 
+alias docker-machine="docker"
 alias bashrc="$EDITOR ~/.bashrc"
 alias zshrc="$EDITOR ~/.zshrc"
 alias vimrc="$EDITOR ~/.vimrc"
@@ -46,9 +48,10 @@ alias prc="$EDITOR ~/.profile"
 alias gw+="X86_64-W64-Mingw32-g++ -static"
 
 PATH="/usr/local/share/npm/bin:$PATH"
-# PATH="$HOME/.rbenv/bin:$PATH"
+PATH="$HOME/.rbenv/bin:$PATH"
+PATH="/home/nyxnaut/.gem/ruby/2.4.0/bin:$PATH"
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-PATH="$PATH:`yarn global bin`"
+# PATH="$PATH: yarn global bin"
 
 export PATH
-export DISPLAY=:0.0
+# export DISPLAY=:0.0

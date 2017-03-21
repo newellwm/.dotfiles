@@ -1,4 +1,5 @@
 "pip2 install --user --upgrade neovim
+zsh:1: command not found: xclip
 if (has("termguicolors"))
   set termguicolors
 endif
@@ -6,27 +7,32 @@ let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Perhaps moll/vim-node if relative paths in node are broken
 " And look into vim-anzu to supplement denite
-call plug#begin('~/.config/nvim/bundle')
 "Next to add:
 "Plug 'craigemery/vim-autotag'
 "Plug 'tpope/vim-fugitive'
+"vim.org Super Retab
+"Plug 'Shougo/neoinclude.vim' " Add with jsctags (ramitos/jsctags)
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"let g:airline_theme='one'
+" Requires tern, currently global added via yarn
+"if executable('tern')
+"  Plug 'carlitux/deoplete-ternjs'
+"endif
+"Plug 'junegunn/fzf.vim'
+call plug#begin('~/.config/nvim/bundle')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Shougo/neoinclude.vim' " Add with jsctags (ramitos/jsctags)
 Plug 'sheerun/vim-polyglot', { 'do': './build' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
+Plug 'https://github.com/joshdick/onedark.vim.git', { 'dir': '~/.config/nvim/colors' }
 Plug 'neomake/neomake'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Requires tern, currently global added via yarn
-if executable('tern')
-  Plug 'carlitux/deoplete-ternjs'
-endif
-"Plug 'junegunn/fzf.vim'
 call plug#end()
+
 filetype plugin indent on
 
 set showmatch "shows matching brace on completion
@@ -74,12 +80,10 @@ set textwidth=80
 set colorcolumn=+1
 
 "colorscheme nofrils-dark
-colorscheme one
-set background=dark
-let g:airline_theme='one'
+colorscheme onedark
+"set background=dark
 
 let g:autotagTagsFile="./.git/tags"
-
 let g:deoplete#enable_at_startup=1
 let g:deoplete#tag#cache_limit_size=50000000
 let g:deoplete#skip_chars = ['(', ')']

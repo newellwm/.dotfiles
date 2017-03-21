@@ -5,7 +5,7 @@ source $ZPLUG_HOME/init.zsh
 source ~/.profile
 
 if ! zplug check; then
-  zplug install
+  zplug update
 fi
 
 # As part of a one-stop-shop update command please do the following:
@@ -58,4 +58,4 @@ if ! zplug check; then
 fi
 
 zplug load
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
