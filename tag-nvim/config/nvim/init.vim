@@ -1,5 +1,4 @@
 "pip2 install --user --upgrade neovim
-zsh:1: command not found: xclip
 if (has("termguicolors"))
   set termguicolors
 endif
